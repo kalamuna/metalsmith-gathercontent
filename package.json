@@ -1,0 +1,43 @@
+{
+  "name": "metalsmith-gathercontent",
+  "version": "0.5.0",
+  "description": "GatherContent metalsmith plugin",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test",
+    "posttest": "npm run xo",
+    "xo": "xo --space --no-semicolon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiagodemellobueno/metalsmith-gathercontent.git"
+  },
+  "keywords": [
+    "metalsmith"
+  ],
+  "author": "Thiago de Mello Bueno",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/thiagodemellobueno/metalsmith-gathercontent/issues"
+  },
+  "homepage": "https://github.com/thiagodemellobueno/metalsmith-gathercontent#readme",
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "node-fetch": "^1.7.3"
+  },
+  "devDependencies": {
+    "assert-dir-equal": "^1.1.0",
+    "jstransformer-twig": "^1.4.0",
+    "metalsmith": "^2.3.0",
+    "metalsmith-jstransformer": "^0.11.0",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-templates": "^0.7.0",
+    "mocha": "^3.5.3",
+    "rimraf": "^2.6.2",
+    "testit": "^3.0.0",
+    "xo": "^0.18.2"
+  }
+}
