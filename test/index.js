@@ -11,8 +11,6 @@ const rmdir = require('rimraf')
  */
 function test(name, plugins) {
 
-  console.log( name, plugins );
-
   testit(name, done => {
     // Ensure we load the Metalsmith JSTransformer Layouts plugin.
     plugins = plugins || {}
