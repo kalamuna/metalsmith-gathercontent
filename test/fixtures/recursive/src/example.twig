@@ -1,0 +1,14 @@
+<h1>{{gatherContent['about-us'].name}}</h1>
+{% for key, item in gatherContent['about-us'].items %}
+  <section class="{{key}}">
+    <h2>{{ item.name }}</h2>
+      {% if item.items %}
+        {% for key, component in item.items %}
+          <div>
+            {{ component.name }}
+            {{ dump(component.config)}}
+          </div>
+        {% endfor %}
+      {% endif %}
+  </section>
+{% endfor %}
