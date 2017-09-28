@@ -58,3 +58,5 @@ typings/
 .env
 
 test/fixtures/**/build
+project.json
+gathercontent_*.json
