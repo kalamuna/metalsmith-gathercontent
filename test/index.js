@@ -18,7 +18,15 @@ function test(name, plugins) {
       plugins['..'] = {}
     }
     if (!plugins['metalsmith-jstransformer']) {
-      plugins['metalsmith-jstransformer'] = {}
+      plugins['metalsmith-jstransformer'] = {
+        engineOptions: {
+          twig: {
+            filters: {
+              slug: require('twig-drupal-filters/filters/clean_id')
+            }
+          }
+        }
+      }
     }
     // Construct Metalsmith with a clean build directory.
     const testPath = 'test/fixtures/' + name
@@ -41,5 +49,5 @@ function test(name, plugins) {
 
 testit('metalsmith-jstransformer', () => {
   test('basic')
-  // test('recursive')
+  test('recursive')
 })

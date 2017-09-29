@@ -1,2 +1,6 @@
-<div>{{gathercontent.pages['about-us'].name}}</div>
-{{dump(gathercontent.pages['about-us'])}}
+{% set page = gathercontent.pages['about-us'] %}
+<article id="page-{{page.id}}">
+  <main class="{{page.name|slug}}" data-id="{{page.id}}">
+    <h1 class="{{page.name|slug}}--title">{{page.name}}</h1>
+  </main>
+</article>
