@@ -26,6 +26,7 @@
   "homepage": "https://github.com/thiagodemellobueno/metalsmith-gathercontent#readme",
   "dependencies": {
     "base-64": "^0.1.0",
+    "hithercontent": "^0.2.1",
     "node-fetch": "^1.7.3",
     "underscore.string": "^3.3.4"
   },

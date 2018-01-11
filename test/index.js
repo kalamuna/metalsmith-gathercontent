@@ -42,7 +42,7 @@ function test(name, plugins) {
         return done(err)
       }
       assertDir(testPath + '/build', testPath + '/expected')
-      done()
+      // done()
     })
   })
 }
