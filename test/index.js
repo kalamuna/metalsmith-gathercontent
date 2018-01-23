@@ -50,7 +50,6 @@ testit('basic', done => {
       return done(err)
     }
     equal('test/fixtures/kalastatic/expected', 'test/fixtures/kalastatic/expected')
-    // A equal('test/fixtures/basic/expected', 'test/fixtures/basic/build')
     done()
   })
 })
