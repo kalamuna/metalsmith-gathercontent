@@ -35,12 +35,14 @@ testit('basic', done => {
     pattern: '!components/**',
     layoutPattern: 'templates/layouts/**',
     engineOptions: {
-      namespaces: {
-        atoms: 'components/atoms',
-        molecules: 'components/molecules',
-        organisms: 'components/organisms',
-        layouts: 'templates/layouts'  
-      }  
+      twig: {
+        namespaces: {
+          atoms: 'components/atoms',
+          molecules: 'components/molecules',
+          organisms: 'components/organisms',
+          layouts: 'templates/layouts'  
+        }    
+      }
     }
   }))
   .build(err => {

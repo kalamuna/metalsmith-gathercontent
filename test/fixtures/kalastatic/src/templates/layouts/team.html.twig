@@ -3,6 +3,7 @@
     <div class="listing">
         {% for item, key in collections.team %}
             {{key}}
+            {% include "@molecules/person/person.html.twig" with item %}
             {% include "../../components/molecules/person/person.html.twig" with item %}
         {% endfor %}
     </div>
