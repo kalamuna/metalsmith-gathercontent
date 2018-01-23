@@ -4,7 +4,7 @@ const collections = require('metalsmith-collections-convention')
 const jsTransformer = require('metalsmith-jstransformer')
 const testit = require('testit')
 const equal = require('assert-dir-equal')
-const metalsmithHitherContent = require('../')
+const metalsmithHitherContent = require('../../..')
 
 /**
  * Define a test case.
@@ -36,10 +36,10 @@ testit('basic', done => {
     engineOptions: {
       twig: {
         namespaces: {
-          atoms: 'components/atoms',
-          molecules: 'components/molecules',
-          organisms: 'components/organisms'
-        }    
+          atoms: __dirname + '/test/fixtures/kalastatic/src/components/atoms',
+          molecules: __dirname + '/test/fixtures/kalastatic/src/components/molecules',
+          organisms: __dirname + '/test/fixtures/kalastatic/src/components/organisms',
+        }
       }
     }
   }))
@@ -47,7 +47,7 @@ testit('basic', done => {
     if (err) {
       return done(err)
     }
-    equal('test/fixtures/kalastatic/expected', 'test/fixtures/kalastatic/expected')
+    equal('test/fixtures/kalastatic/build', 'test/fixtures/kalastatic/expected')
     done()
   })
 })

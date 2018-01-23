@@ -1,5 +1,8 @@
 ---
 test: "hihi"
-layout: "templates/layouts/page.html.twig"
+layout: "page.html.twig"
 ---
+
+# Hello, World
+
 Hello there!
