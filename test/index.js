@@ -1,10 +1,11 @@
-const assertDir = require('assert-dir-equal')
-const Metalsmith = require('metalsmith')
+const metalsmith = require('metalsmith')
+const md = require('metalsmith-markdown')
+const collections = require('metalsmith-collections-convention')
+const jsTransformer = require('metalsmith-jstransformer')
 const testit = require('testit')
-const rmdir = require('rimraf')
-const fs = require('fs')
-const metalsmithJSTranformer = require('metalsmith-jstransformer')
+const equal = require('assert-dir-equal')
 const metalsmithHitherContent = require('../')
+
 /**
  * Define a test case.
  *
@@ -12,36 +13,42 @@ const metalsmithHitherContent = require('../')
  * @param plugins - An associative array of plugin key name, and options for it.
  */
 
-function test(name, plugins) {
-
-  testit(name, done => {
-
-    if ( name == "basic") {
-      
-      Metalsmith('test/fixtures/basic')
-      .use(metalsmithJSTranformer({
-        engineOptions: {
-          twig: {
-            filters: {
-              slug: require('twig-drupal-filters/filters/clean_id')
-            }
-          }
-        }
-      }))
-      .use(metalsmithHitherContent({
-        authPath: "auth.json",
-        projectId: 116902
-      }))
-      .build(function(err){
-        if (err) return done(err);
-        equal('test/fixtures/basic/expected', 'test/fixtures/basic/build');
-        done();
-      });  
+testit('basic', done => {
+  metalsmith('test/fixtures/kalastatic/')
+  .use(metalsmithHitherContent({
+    authPath: '_auth.json',
+    projectId: 152172,
+    mappings: {
+      id: 'id',
+      slug: '_name',
+      title: 'Content_Title',
+      'hero-image': 'Content_HeroImage',
+      tier: 'tier',
+      summary: 'Content_Summary',
+      contents: 'Content_Content',
+      parent: '_parent_id'
     }
-
+  }))
+  .use(md())
+  .use(collections())
+  .use(jsTransformer({
+    pattern: '!components/**',
+    layoutPattern: 'templates/layouts/**',
+    engineOptions: {
+      namespaces: {
+        atoms: 'components/atoms',
+        molecules: 'components/molecules',
+        organisms: 'components/organisms',
+        layouts: 'templates/layouts'  
+      }  
+    }
+  }))
+  .build(err => {
+    if (err) {
+      return done(err)
+    }
+    equal('test/fixtures/kalastatic/expected', 'test/fixtures/kalastatic/expected')
+    // A equal('test/fixtures/basic/expected', 'test/fixtures/basic/build')
+    done()
   })
-}
-
-testit('metalsmith-gathercontent', () => {
-  test('basic')
 })
