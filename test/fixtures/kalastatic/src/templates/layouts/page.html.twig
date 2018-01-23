@@ -2,11 +2,16 @@
     <article>
         {% block contents %}
         <h1>{{title}}</h1>
+        <dl>
+            <dt>layout:</dt>
+            <dd>{{layout}}</dd>
+        </dl>
         <div class="contents">
             {{contents}}
         </div>
 
         {% include '@atoms/a/a.html.twig' %}
+
         {% endblock %}
     </article>
 </main>
