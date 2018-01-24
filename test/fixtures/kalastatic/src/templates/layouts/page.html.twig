@@ -1,12 +1,15 @@
 <main>
     <article>
         {% block contents %}
-        <h1>{{title}}</h1>
+
         <div class="contents">
             {{contents}}
-        </div>
 
-        {% include '@atoms/a/a.html.twig' %}
+            <hr>
+
+            {{collections.team.length}}
+            {{collections.people.length}}
+        </div>
         {% endblock %}
     </article>
 </main>

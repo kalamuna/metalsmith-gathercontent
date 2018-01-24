@@ -1,5 +1,5 @@
 ---
 test: "hihi"
-layout: "templates/layouts/page.html.twig"
+layout: "test/fixtures/kalastatic/src/templates/page.html.twig"
 ---
 Hello there!

@@ -4,7 +4,8 @@ const collections = require('metalsmith-collections-convention')
 const jsTransformer = require('metalsmith-jstransformer')
 const testit = require('testit')
 const equal = require('assert-dir-equal')
-const metalsmithHitherContent = require('../')
+const cleanURLs = require('metalsmith-clean-urls')
+const metalsmithGatherContent = require('../')
 
 /**
  * Define a test case.
@@ -15,7 +16,7 @@ const metalsmithHitherContent = require('../')
 
 testit('basic', done => {
   metalsmith('test/fixtures/kalastatic/')
-  .use(metalsmithHitherContent({
+  .use(metalsmithGatherContent({
     authPath: '_auth.json',
     projectId: 152172,
     mappings: {
@@ -26,7 +27,7 @@ testit('basic', done => {
       tier: 'tier',
       summary: 'Content_Summary',
       contents: 'Content_Content',
-      parent: '_parent_id'
+      parentId: '_parent_id'
     }
   }))
   .use(md())
@@ -34,17 +35,18 @@ testit('basic', done => {
   .use(jsTransformer({
     pattern: '!components/**',
     layoutPattern: 'templates/layouts/**',
+    defaultLayout: 'page.html.twig',
     engineOptions: {
       twig: {
         namespaces: {
           atoms: 'components/atoms',
           molecules: 'components/molecules',
-          organisms: 'components/organisms',
-          layouts: 'templates/layouts'  
-        }    
+          organisms: 'components/organisms'
+        }
       }
     }
   }))
+  .use(cleanURLs())
   .build(err => {
     if (err) {
       return done(err)
