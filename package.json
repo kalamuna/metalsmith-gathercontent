@@ -1,7 +1,7 @@
 {
   "name": "metalsmith-gathercontent",
   "version": "0.5.0",
-  "description": "GatherContent metalsmith plugin",
+  "description": "GatherContent metalsmith plugin using hithercontent",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -25,22 +25,30 @@
   },
   "homepage": "https://github.com/thiagodemellobueno/metalsmith-gathercontent#readme",
   "dependencies": {
-    "base-64": "^0.1.0",
-    "node-fetch": "^1.7.3",
-    "underscore.string": "^3.3.4"
+    "hithercontent": "^0.2.1",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "assert-dir-equal": "^1.1.0",
     "jstransformer-html-beautify": "0.0.1",
     "jstransformer-twig": "^1.4.0",
     "metalsmith": "^2.3.0",
+    "metalsmith-assets-convention": "^1.2.0",
+    "metalsmith-clean-urls": "^1.1.0",
+    "metalsmith-collections-convention": "^1.2.0",
+    "metalsmith-concat-convention": "^1.2.0",
+    "metalsmith-define": "^2.0.1",
+    "metalsmith-env": "^2.0.0",
+    "metalsmith-ignore": "^0.1.2",
     "metalsmith-jstransformer": "^0.11.0",
-    "metalsmith-markdown": "^0.2.1",
-    "metalsmith-templates": "^0.7.0",
+    "metalsmith-jstransformer-partials": "^2.0.0",
+    "metalsmith-markdown": "^0.2.2",
+    "metalsmith-metadata-convention": "^1.0.1",
+    "metalsmith-metadata-files": "^2.2.0",
+    "metalsmith-paths": "^3.0.1",
     "mocha": "^3.5.3",
     "rimraf": "^2.6.2",
     "testit": "^3.0.0",
-    "twig-drupal-filters": "^1.1.0",
     "xo": "^0.18.2"
   }
 }

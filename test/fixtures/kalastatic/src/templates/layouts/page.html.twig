@@ -1,0 +1,16 @@
+<main>
+    <article>
+        {% block contents %}
+
+        <div class="contents">
+            {{contents}}
+
+            <hr>
+
+            {{collections.team.length}}
+            {{collections.people.length}}
+        </div>
+        {% endblock %}
+    </article>
+</main>
+

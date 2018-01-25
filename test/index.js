@@ -1,7 +1,20 @@
-const assertDir = require('assert-dir-equal')
-const Metalsmith = require('metalsmith')
+const metalsmith = require('metalsmith')
+const md = require('metalsmith-markdown')
 const testit = require('testit')
-const rmdir = require('rimraf')
+const env = require('metalsmith-env')
+const define = require('metalsmith-define')
+const metadataFiles = require('metalsmith-metadata-files')
+const metalsmithPaths = require('metalsmith-paths')
+const metadataConventions = require('metalsmith-metadata-convention')
+const concatConventions = require('metalsmith-concat-convention')
+const collections = require('metalsmith-collections-convention')
+const assets = require('metalsmith-assets-convention')
+const ignore = require('metalsmith-ignore')
+const jsTransformerPartials = require('metalsmith-jstransformer-partials')
+const jsTransformer = require('metalsmith-jstransformer')
+const equal = require('assert-dir-equal')
+const cleanURLs = require('metalsmith-clean-urls')
+const metalsmithGatherContent = require('../')
 
 /**
  * Define a test case.
@@ -10,44 +23,62 @@ const rmdir = require('rimraf')
  * @param plugins - An associative array of plugin key name, and options for it.
  */
 
-function test(name, plugins) {
-  testit(name, done => {
-    // Ensure we load the Metalsmith JSTransformer Layouts plugin.
-    plugins = plugins || {}
-    if (!plugins['..']) {
-      plugins['..'] = {}
+testit('basic', done => {
+  metalsmith('test/fixtures/kalastatic/')
+  .use(metalsmithGatherContent({
+    authPath: '_auth.json',
+    projectId: 152172,
+    mappings: {
+      id: 'id',
+      slug: '_name',
+      title: 'Content_Title',
+      'hero-image': 'Content_HeroImage',
+      tier: 'tier',
+      summary: 'Content_Summary',
+      contents: 'Content_Content',
+      parentId: '_parent_id'
     }
-    if (!plugins['metalsmith-jstransformer']) {
-      plugins['metalsmith-jstransformer'] = {
-        engineOptions: {
-          twig: {
-            filters: {
-              slug: require('twig-drupal-filters/filters/clean_id')
-            }
-          }
+  }))
+  .use(md())
+  .use(env())
+  .use(define({
+    'base_path': '/', // eslint-disable-line quote-props
+    'build_path': '/' // eslint-disable-line quote-props
+  }))
+  .use(metadataFiles({
+    inheritFilePrefix: '@kalastatic/'
+  }))
+  .use(metalsmithPaths())
+  .use(metadataConventions())
+  .use(concatConventions())
+  .use(collections())
+  .use(assets())
+  .use(ignore([
+    'components/**/*',
+    'templates/**/*',
+    '**/*.collection',
+    '**/_*'
+  ]))
+  .use(jsTransformerPartials())
+  .use(jsTransformer({
+    engineOptions: {
+      pattern: '**',
+      layoutPattern: '../../fixtures/kalastatic/src/templates/layouts/**',
+      twig: {
+        namespaces: {
+          atoms: 'components/atoms',
+          molecules: 'components/molecules',
+          organisms: 'components/organisms'
         }
       }
     }
-    // Construct Metalsmith with a clean build directory.
-    const testPath = 'test/fixtures/' + name
-    rmdir.sync(testPath + '/build')
-    // Boot up Metalsmith and load the plugins.
-    const metalsmith = new Metalsmith(testPath)
-    Object.keys(plugins).forEach(pluginName => {
-      metalsmith.use(require(pluginName)(plugins[pluginName])) // eslint-disable-line import/no-dynamic-require
-    })
-    // Build with Metalsmith.
-    metalsmith.build(err => {
-      if (err) {
-        return done(err)
-      }
-      assertDir(testPath + '/build', testPath + '/expected')
-      done()
-    })
+  }))
+  .use(cleanURLs())
+  .build(err => {
+    if (err) {
+      return done(err)
+    }
+    equal('test/fixtures/kalastatic/expected', 'test/fixtures/kalastatic/expected')
+    done()
   })
-}
-
-testit('metalsmith-jstransformer', () => {
-  test('basic')
-  test('recursive')
 })

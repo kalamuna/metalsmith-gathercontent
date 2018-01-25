@@ -1,0 +1,4 @@
+---
+pattern: 'people/*.md'
+---
+This is the collection of articles. It is available at: metalsmith.metadata().articles
