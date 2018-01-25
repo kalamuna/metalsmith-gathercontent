@@ -1,5 +1,5 @@
 ---
-test: "hihi"
-layout: "test/fixtures/kalastatic/src/templates/page.html.twig"
+layout: templates/layouts/page.html.twig?31213213
+title: hihi
 ---
-Hello there!
+<h1>Hello there test!</h1>
