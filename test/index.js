@@ -36,7 +36,7 @@ function setupTest(name, opts) {
   })
 }
 
-setupTest('metalsmith-gathercontent', {
+setupTest('general', {
   pluginOpts: {
     'metalsmith-gathercontent': {
       authPath: '_auth.json',
@@ -62,18 +62,42 @@ setupTest('metalsmith-gathercontent', {
             molecules: 'components/molecules',
             organisms: 'components/organisms'
           }
-        },
-        scss: {
-          outputStyle: 'nested',
-          sourceMap: true,
-          outFile: 'main.css',
-          sourceComments: false,
-          includePaths: [
-            'node_modules/bootstrap/scss',
-            'node_modules/font-awesome/scss',
-            'web/themes/custom/vapor/kalastatic/styles',
-            'web/themes/custom/vapor/kalastatic/components'
-          ]
+        }
+      }
+    }
+  }
+})
+
+
+setupTest('status-iltering', {
+  pluginOpts: {
+    'metalsmith-gathercontent': {
+      authPath: '_auth.json',
+      projectId: 152172,
+      mappings: {
+        id: 'id',
+        slug: '_name',
+        title: 'Content_Title',
+        'hero-image': 'Content_HeroImage',
+        tier: 'tier',
+        summary: 'Content_Summary',
+        contents: 'Content_Content',
+        parentId: '_parent_id'
+      },
+      status: [
+        922006
+      ]
+    },
+    'metalsmith-jstransformer': {
+      pattern: '!components/**',
+      layoutPattern: 'templates/layouts/**',
+      engineOptions: {
+        twig: {
+          namespaces: {
+            atoms: 'components/atoms',
+            molecules: 'components/molecules',
+            organisms: 'components/organisms'
+          }
         }
       }
     }
