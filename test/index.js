@@ -69,7 +69,7 @@ setupTest('general', {
 })
 
 
-setupTest('status-iltering', {
+setupTest('status-filtering', {
   pluginOpts: {
     'metalsmith-gathercontent': {
       authPath: '_auth.json',
