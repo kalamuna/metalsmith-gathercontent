@@ -68,7 +68,6 @@ setupTest('general', {
   }
 })
 
-
 setupTest('status-filtering', {
   pluginOpts: {
     'metalsmith-gathercontent': {
