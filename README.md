@@ -5,6 +5,8 @@ A metalsmith plugin for GatherContent using the [hithercontent](https://www.npmj
 ```npm install --save metalsmith-gathercontent```
 
 Please note you need to create _auth.json with a GatherContent API key for this to work.
+Also note tests wont work without an _auth.json present in the project root.
+
 ```
 {
     "user": "me@myself.net",
@@ -36,22 +38,25 @@ metalsmith.use(gatherContent());
 
 ## Usage
 ```
-authPath: '_auth.json',
-      projectId: 152172,
-      mappings: {
-        id: 'id',
-        slug: '_name',
-        title: 'Content_Title',
-        'hero-image': 'Content_HeroImage',
-        tier: 'tier',
-        summary: 'Content_Summary',
-        contents: 'Content_Content',
-        parentId: '_parent_id'
-      },
-      status: [
-        922006
-      ]
-    })
+var gatherContent = require('metalsmith-gathercontent');
+…
+.use(gatherContent({
+  authPath: '_auth.json',
+  projectId: 152172,
+  mappings: {
+    id: 'id',
+    slug: '_name',
+    title: 'Content_Title',
+    'hero-image': 'Content_HeroImage',
+    tier: 'tier',
+    summary: 'Content_Summary',
+    contents: 'Content_Content',
+    parentId: '_parent_id'
+  },
+  status: [
+    922006
+  ]
+}))
 …
 ```
 
