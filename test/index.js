@@ -40,6 +40,7 @@ setupTest('general', {
       authPath: '_auth.json',
       filePath: 'test/fixtures/general/src/assets/images/gathercontent',
       projectId: 152172,
+/* jshint ignore:start */
       mappings: {
         id: 'id',
         slug: '_name',
@@ -54,7 +55,9 @@ setupTest('general', {
         last: 'Content_Last-Name',
         bio: 'Content_Bio',
         image: 'Content_Image',
+        profile__image: 'Content_Profile-Image',
         type: '_type'
+/* jshint ignore:end */      
       }
     },
     'metalsmith-ignore': [

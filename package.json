@@ -9,7 +9,7 @@
   "scripts": {
     "test": "node test",
     "posttest": "npm run xo",
-    "xo": "xo --space --no-semicolon;"
+    "xo": "xo --space --no-semicolon --ignore test/index.js"
   },
   "repository": {
     "type": "git",

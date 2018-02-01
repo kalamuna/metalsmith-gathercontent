@@ -67,12 +67,21 @@ The id of you Gather Content project.
 Key value pairs to map variables from the hithercontent output.
 Where keys are the keys you want, and the values are what hithercontent is outputting.
 This allows you to work with the Gather Content project as is.
-All additional keys are stored in `fullData`
+All additional keys are stored in a `fullData` object.
+This plugin uses a "Meta" tab in gathercontent to store collections, and layouts.
+Additionally if there are no mappings and a key `Content_Content` is present it will be automatically mapped to the `contents` property as a buffer.
+As per hithercontent, keys within a Gather Content tab will be modified as follow `TabName_KeyName`
 
 ### status
 An array of Gather Content workflow status codes to filter against.
 This way you can work with only "ready" content. 
 When blank it ingests all content in a project regardless of status code.
+
+### verbose
+More console.logs when set to true
+
+## Files and Images
+Right now any key with `__image` in the index is processed as an image, and downloaded to `src/assets/gathercontent/` similarly for `__file` we will likely need to change this. Images that are arrays are stored as arrays. 
 
 ## License
 MIT
