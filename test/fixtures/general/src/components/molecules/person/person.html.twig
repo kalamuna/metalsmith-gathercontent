@@ -1,5 +1,6 @@
 <article class="person">
-    <h3>{{first_name}} {{last_name}}</h3>
+    <h3>{{first}} {{last}}</h3>
+    {% include "../../atoms/image/image.html.twig" with image only %}
     <div class="bio">
         {{bio}}
     </div>

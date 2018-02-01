@@ -1,5 +1,7 @@
 ---
 layout: templates/layouts/page.html.twig
-title: hihi
+collection:
+    - stories
+    - articles
 ---
 <h1>Hello there test!</h1>

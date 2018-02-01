@@ -1,10 +1,8 @@
+{% extends "../../test/fixtures/status-filtering/src/templates/layouts/page.html.twig" %}
+
+{% block pageContent %}
 <article class="team-listing">
     <h2>{{title}}</h2>
-    <div class="listing">
-        {% for item, key in collections.team %}
-            {{key}}
-            {% include "@molecules/person/person.html.twig" with item %}
-            {% include "../../components/molecules/person/person.html.twig" with item %}
-        {% endfor %}
-    </div>
+    <section class="content">{{contents}}</section>
 </article>
+{% endblock %}

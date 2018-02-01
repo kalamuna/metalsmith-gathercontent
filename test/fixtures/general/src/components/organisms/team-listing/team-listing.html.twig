@@ -1,0 +1,6 @@
+
+<section class="team-listing">
+{% for person in collections.team %}
+    {% include "../../molecules/person/person.html.twig" with person only %}
+{% endfor %}
+</section>

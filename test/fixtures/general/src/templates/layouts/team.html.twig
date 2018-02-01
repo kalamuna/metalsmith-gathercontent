@@ -1,10 +1,11 @@
-<article class="team-listing">
-    <h2>{{title}}</h2>
-    <div class="listing">
-        {% for item, key in collections.team %}
-            {{key}}
-            {% include "@molecules/person/person.html.twig" with item %}
-            {% include "../../components/molecules/person/person.html.twig" with item %}
-        {% endfor %}
-    </div>
-</article>
+{% extends "../../test/fixtures/general/src/templates/layouts/page.html.twig" %}
+
+{% block pageContent %}
+    <article>
+        <h3>{{title}}</h3>
+        <section class="lede">
+            {{contents}}
+        </section>
+        {% include "../../test/fixtures/general/src/components/organisms/team-listing/team-listing.html.twig" %}
+    </article>
+{% endblock %}

@@ -25,8 +25,14 @@
   },
   "homepage": "https://github.com/thiagodemellobueno/metalsmith-gathercontent#readme",
   "dependencies": {
+    "base-64": "^0.1.0",
+    "fetch": "^1.1.0",
+    "fs": "0.0.1-security",
     "hithercontent": "^0.2.1",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
+    "node-fetch": "^1.7.3",
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "assert-dir-equal": "^1.1.0",
@@ -37,7 +43,7 @@
     "metalsmith": "^2.3.0",
     "metalsmith-assets-convention": "^1.2.0",
     "metalsmith-clean-urls": "^1.1.0",
-    "metalsmith-collections-convention": "^1.2.0",
+    "metalsmith-collections-convention": "git@github.com:thiagodemellobueno/metalsmith-collections-convention.git#multicollections",
     "metalsmith-concat-convention": "^1.2.0",
     "metalsmith-define": "^2.0.1",
     "metalsmith-env": "^2.0.0",

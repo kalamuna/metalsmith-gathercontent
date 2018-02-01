@@ -1,14 +1,8 @@
 <main>
     <article>
-        {% block contents %}
-
+        {% block pageContent %}
         <div class="contents">
             {{contents}}
-
-            <hr>
-
-            {{collections.team.length}}
-            {{collections.people.length}}
         </div>
         {% endblock %}
     </article>

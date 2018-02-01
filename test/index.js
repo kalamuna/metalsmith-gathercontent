@@ -12,14 +12,12 @@ function setupTest(name, opts) {
     return new Promise((resolve, reject) => {
       // Create the configuration for the test.
       const conf = new nconf.Provider()
-
       // Force the settings for the test.
       const testOpts = {
         base: path.join('test', 'fixtures', name)
       }
       extend(testOpts, opts)
       conf.overrides(testOpts)
-
       // Create the environment.
       const kalastatic = new KalaStatic(conf)
       kalastatic.build().then(() => {
@@ -28,7 +26,6 @@ function setupTest(name, opts) {
         const build = path.join(base, kalastatic.nconf.get('destination'))
         const expected = path.join(base, 'expected')
         assertDir(build, expected)
-
         // Continue the test suite.
         resolve()
       }, reject).catch(reject)
@@ -39,31 +36,34 @@ function setupTest(name, opts) {
 setupTest('general', {
   pluginOpts: {
     'metalsmith-gathercontent': {
+      verbose: false,
       authPath: '_auth.json',
+      filePath: 'test/fixtures/general/src/assets/images/gathercontent',
       projectId: 152172,
       mappings: {
         id: 'id',
         slug: '_name',
+        name: '_name',
         title: 'Content_Title',
-        'hero-image': 'Content_HeroImage',
+        heroImage: 'Content_HeroImage',
         tier: 'tier',
         summary: 'Content_Summary',
         contents: 'Content_Content',
-        parentId: '_parent_id'
+        parentId: '_parent_id',
+        first: 'Content_First-Name',
+        last: 'Content_Last-Name',
+        bio: 'Content_Bio',
+        image: 'Content_Image',
+        type: '_type'
       }
     },
+    'metalsmith-ignore': [
+      '**/_*',
+      'components/**/*'
+    ],
     'metalsmith-jstransformer': {
       pattern: '!components/**',
-      layoutPattern: 'templates/layouts/**',
-      engineOptions: {
-        twig: {
-          namespaces: {
-            atoms: 'components/atoms',
-            molecules: 'components/molecules',
-            organisms: 'components/organisms'
-          }
-        }
-      }
+      layoutPattern: 'templates/layouts/**'
     }
   }
 })
@@ -71,34 +71,17 @@ setupTest('general', {
 setupTest('status-filtering', {
   pluginOpts: {
     'metalsmith-gathercontent': {
+      verbose: 'true',
       authPath: '_auth.json',
+      filePath: 'test/fixtures/status-filtering/src/assets/images/gathercontent',
       projectId: 152172,
-      mappings: {
-        id: 'id',
-        slug: '_name',
-        title: 'Content_Title',
-        'hero-image': 'Content_HeroImage',
-        tier: 'tier',
-        summary: 'Content_Summary',
-        contents: 'Content_Content',
-        parentId: '_parent_id'
-      },
       status: [
         922006
       ]
     },
     'metalsmith-jstransformer': {
       pattern: '!components/**',
-      layoutPattern: 'templates/layouts/**',
-      engineOptions: {
-        twig: {
-          namespaces: {
-            atoms: 'components/atoms',
-            molecules: 'components/molecules',
-            organisms: 'components/organisms'
-          }
-        }
-      }
+      layoutPattern: 'templates/layouts/**'
     }
   }
 })
