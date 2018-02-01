@@ -2,12 +2,14 @@
 A metalsmith plugin for GatherContent using the [hithercontent](https://www.npmjs.com/package/hithercontent) library.
 
 ## Installation
-```npm install --save metalsmith-gathercontent```
+```cli
+npm install --save metalsmith-gathercontent
+```
 
 Please note you need to create _auth.json with a GatherContent API key for this to work.
 Also note tests wont work without an _auth.json present in the project root.
 
-```
+```json
 {
     "user": "me@myself.net",
     "akey": "XXXXXXXXXXXXXXXXXXXXXXXX"
@@ -37,7 +39,7 @@ metalsmith.use(gatherContent());
 ```
 
 ## Usage
-```
+```js
 var gatherContent = require('metalsmith-gathercontent');
 …
 .use(gatherContent({
@@ -47,11 +49,12 @@ var gatherContent = require('metalsmith-gathercontent');
     id: 'id',
     slug: '_name',
     title: 'Content_Title',
-    'hero-image': 'Content_HeroImage',
+    hero__image: 'Content_Hero-Image',
     tier: 'tier',
     summary: 'Content_Summary',
     contents: 'Content_Content',
-    parentId: '_parent_id'
+    parentId: '_parent_id',
+    article__image_gallery: 'Content_Image-Gallery'    
   },
   status: [
     922006
@@ -68,6 +71,7 @@ Key value pairs to map variables from the hithercontent output.
 Where keys are the keys you want, and the values are what hithercontent is outputting.
 This allows you to work with the Gather Content project as is.
 All additional keys are stored in a `fullData` object.
+
 This plugin uses a "Meta" tab in gathercontent to store collections, and layouts.
 Additionally if there are no mappings and a key `Content_Content` is present it will be automatically mapped to the `contents` property as a buffer.
 As per hithercontent, keys within a Gather Content tab will be modified as follow `TabName_KeyName`
