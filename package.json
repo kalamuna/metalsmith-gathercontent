@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-gathercontent",
-  "version": "0.8.1",
+  "version": "1.0.0",
   "description": "GatherContent metalsmith plugin using hithercontent",
   "main": "index.js",
   "directories": {
@@ -43,7 +43,7 @@
     "metalsmith": "^2.3.0",
     "metalsmith-assets-convention": "^1.2.0",
     "metalsmith-clean-urls": "^1.1.0",
-    "metalsmith-collections-convention": "git@github.com:thiagodemellobueno/metalsmith-collections-convention.git#multicollections",
+    "metalsmith-collections-convention": "^1.2.0",
     "metalsmith-concat-convention": "^1.2.0",
     "metalsmith-define": "^2.0.1",
     "metalsmith-env": "^2.0.0",
