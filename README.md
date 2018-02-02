@@ -1,4 +1,7 @@
 # metalsmith-gathercontent
+
+[![CircleCI](https://circleci.com/gh/kalamuna/metalsmith-gathercontent.svg?style=svg)](https://circleci.com/gh/kalamuna/metalsmith-gathercontent)
+
 A metalsmith plugin for GatherContent using the [hithercontent](https://www.npmjs.com/package/hithercontent) library.
 
 ## Installation
