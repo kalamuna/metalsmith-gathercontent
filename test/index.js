@@ -6,15 +6,48 @@ const KalaStatic = require('kalastatic')
 const test = require('testit')
 const nconf = require('nconf')
 const extend = require('extend-shallow')
+const mgc = require('../lib/index.js')
 
 function setupTest(name, opts) {
+
   test(name, () => {
     return new Promise((resolve, reject) => {
       // Create the configuration for the test.
       const conf = new nconf.Provider()
       // Force the settings for the test.
       const testOpts = {
-        base: path.join('test', 'fixtures', name)
+        base: path.join('test', 'fixtures', name),
+        plugins: [
+          // brong in data from gathercontent
+          {
+            plugin: mgc,
+            name: 'metalsmith-gathercontent'
+          },
+          // Load information from the environment variables.
+          'metalsmith-env',
+          // Define any global variables.
+          'metalsmith-define',
+          // Add .json metadata to each file.
+          'metalsmith-metadata-files',
+          // Add base, dir, ext, name, and href info to each file.
+          'metalsmith-paths',
+          // Load metadata info the metalsmith metadata object.
+          'metalsmith-metadata-convention',
+          // Concatenate any needed files.
+          'metalsmith-concat-convention',
+          // Load all collections.
+          'metalsmith-collections-convention',
+          // Bring in static assets.
+          'metalsmith-assets-convention',
+          // Ignore all partials and layouts.
+          'metalsmith-ignore',
+          // Load all Partials.
+          'metalsmith-jstransformer-partials',
+          // Render all content with JSTransformers.
+          'metalsmith-jstransformer',
+          // Clean URLs.
+          'metalsmith-clean-urls'
+        ]
       }
       extend(testOpts, opts)
       conf.overrides(testOpts)
@@ -40,7 +73,6 @@ setupTest('general', {
       authPath: '_auth.json',
       filePath: 'test/fixtures/general/src/assets/images/gathercontent',
       projectId: 152172,
-/* jshint ignore:start */
       mappings: {
         id: 'id',
         slug: '_name',
@@ -56,8 +88,7 @@ setupTest('general', {
         bio: 'Content_Bio',
         image: 'Content_Image',
         profile__image: 'Content_Profile-Image',
-        type: '_type'
-/* jshint ignore:end */      
+        type: '_type'    
       }
     },
     'metalsmith-ignore': [
