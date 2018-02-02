@@ -6,8 +6,8 @@ A metalsmith plugin for GatherContent using the [hithercontent](https://www.npmj
 npm install --save metalsmith-gathercontent
 ```
 
-Please note you need to create _auth.json with a GatherContent API key for this to work.
-Also note tests wont work without an _auth.json present in the project root.
+Please note you need to create `_auth.json` with a GatherContent API key for this to work.
+Also note tests wont work without an `_auth.json` present in the project root.
 
 ```json
 {
@@ -15,6 +15,10 @@ Also note tests wont work without an _auth.json present in the project root.
     "akey": "XXXXXXXXXXXXXXXXXXXXXXXX"
 }
 ```
+
+Alternatively, you can use the following environment variables:
+- `GATHERCONTENT_USER`
+- `GATHERCONTENT_AKEY`
 
 ### CLI
 
