@@ -18,7 +18,7 @@ function setupTest(name, opts) {
       const testOpts = {
         base: path.join('test', 'fixtures', name),
         plugins: [
-          // brong in data from gathercontent
+          // Bring in data from gathercontent
           {
             plugin: mgc,
             name: 'metalsmith-gathercontent'
