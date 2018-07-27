@@ -39,7 +39,7 @@
     "extend-shallow": "^3.0.2",
     "jstransformer-html-beautify": "0.0.1",
     "jstransformer-twig": "^1.4.0",
-    "kalastatic": "git://github.com/kalamuna/kalastatic.git#pluginarraymods",
+    "kalastatic": "git://github.com/kalamuna/kalastatic.git#kcomcs",
     "metalsmith": "^2.3.0",
     "metalsmith-assets-convention": "^1.2.0",
     "metalsmith-clean-urls": "^1.1.0",
