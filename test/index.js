@@ -88,7 +88,7 @@ setupTest('general', {
         bio: 'Content_Bio',
         image: 'Content_Image',
         profile__image: 'Content_Profile-Image',
-        type: '_type'    
+        type: '_type'
       }
     },
     'metalsmith-ignore': [
