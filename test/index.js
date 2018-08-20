@@ -73,6 +73,7 @@ setupTest('general', {
       authPath: '_auth.json',
       filePath: 'test/fixtures/general/src/assets/images/gathercontent',
       projectId: 152172,
+      logMappings: true,
       mappings: {
         id: 'id',
         slug: '_name',
