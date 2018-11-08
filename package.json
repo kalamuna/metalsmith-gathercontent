@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-gathercontent",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "GatherContent metalsmith plugin using hithercontent",
   "main": "index.js",
   "directories": {
