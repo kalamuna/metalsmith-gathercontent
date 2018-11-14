@@ -8,8 +8,7 @@
   },
   "scripts": {
     "test": "node test",
-    "posttest": "npm run xo",
-    "xo": "xo --space --no-semicolon --ignore test/index.js"
+    "posttest": "xo --space --no-semicolon --ignore test/index.js"
   },
   "repository": {
     "type": "git",
@@ -30,36 +29,36 @@
     "file-type": "^9.0.0",
     "fs": "0.0.1-security",
     "hithercontent": "^0.2.1",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.10",
     "mkdirp": "^0.5.1",
-    "node-fetch": "^1.7.3",
     "read-chunk": "^3.0.0",
-    "request": "^2.83.0"
+    "node-fetch": "^2.2.0",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "assert-dir-equal": "^1.1.0",
     "extend-shallow": "^3.0.2",
     "jstransformer-html-beautify": "0.0.1",
-    "jstransformer-twig": "^1.4.0",
+    "jstransformer-twig": "^1.5.0-alpha.4",
     "kalastatic": "git@github.com:kalamuna/kalastatic.git#master",
     "metalsmith": "^2.3.0",
     "metalsmith-assets-convention": "^1.2.0",
     "metalsmith-clean-urls": "^1.1.0",
-    "metalsmith-collections-convention": "^1.3.0",
+    "metalsmith-collections-convention": "^1.3.2",
     "metalsmith-concat-convention": "^1.2.0",
     "metalsmith-define": "^2.0.1",
-    "metalsmith-env": "^2.0.0",
+    "metalsmith-env": "^2.1.1",
     "metalsmith-ignore": "^0.1.2",
-    "metalsmith-jstransformer": "^0.12.1",
+    "metalsmith-jstransformer": "^0.13.2",
     "metalsmith-jstransformer-partials": "^2.0.0",
     "metalsmith-markdown": "^0.2.2",
     "metalsmith-metadata-convention": "^1.0.1",
     "metalsmith-metadata-files": "^2.2.0",
     "metalsmith-paths": "^3.0.1",
-    "mocha": "^5.0.0",
+    "mocha": "^5.2.0",
     "nconf": "^0.10.0",
     "rimraf": "^2.6.2",
     "testit": "^3.0.0",
-    "xo": "^0.18.2"
+    "xo": "^0.23.0"
   }
 }
