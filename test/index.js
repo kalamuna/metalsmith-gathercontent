@@ -106,7 +106,8 @@ setupTest('general', {
 setupTest('status-filtering', {
   pluginOpts: {
     'metalsmith-gathercontent': {
-      verbose: 'true',
+      verbose: true,
+      logFileContents: true,
       authPath: '_auth.json',
       filePath: 'test/fixtures/status-filtering/src/assets/images/gathercontent',
       projectId: 152172,
