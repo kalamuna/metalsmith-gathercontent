@@ -27,11 +27,14 @@
   "dependencies": {
     "base-64": "^0.1.0",
     "fetch": "^1.1.0",
+    "file-type": "^10.5.0",
     "fs": "0.0.1-security",
     "hithercontent": "^0.2.1",
+    "is-svg": "^3.0.0",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
     "node-fetch": "^1.7.3",
+    "read-chunk": "^3.0.0",
     "request": "^2.83.0"
   },
   "devDependencies": {
