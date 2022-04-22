@@ -58,7 +58,7 @@
     "metalsmith-metadata-files": "^2.2.0",
     "metalsmith-paths": "^3.0.1",
     "mocha": "^5.0.0",
-    "nconf": "^0.10.0",
+    "nconf": "^0.11.4",
     "rimraf": "^2.6.2",
     "testit": "^3.0.0",
     "xo": "^0.18.2"
