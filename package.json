@@ -33,7 +33,7 @@
     "is-svg": "^3.0.0",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
-    "node-fetch": "^1.7.3",
+    "node-fetch": "^2.6.7",
     "read-chunk": "^3.0.0",
     "request": "^2.83.0"
   },
